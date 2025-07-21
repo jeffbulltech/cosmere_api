@@ -25,6 +25,9 @@ seed:
 clean:
 	rm -f $(DATA_DIR)/*.json
 
+bulk-parse:
+	python3 backend/scripts/bulk_parse_coppermind_wiki.py uploads
+
 # Help
 help:
 	@echo "Cosmere API Data Pipeline Makefile"
