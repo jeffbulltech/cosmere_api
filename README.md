@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://localhost:5175">
-    <img src="./cosmere_api/branding/cosmere_readme_banner.png"  alt="Cosmere API" />
+    <img src="cosmere_api/branding/cosmere_readme_banner.png"  alt="Cosmere API" />
   </a>
 </p>
 
