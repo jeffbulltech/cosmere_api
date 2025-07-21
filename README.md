@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="http://localhost:5175">
-    <img src="cosmere_api/branding/cosmere_readme_banner.png"  alt="Cosmere API" />
-  </a>
-</p>
+!["A Cosmere-inspired image from Brandon Sanderson's fantasy universe"](/branding/cosmere_readme_banner.png)
 
 <h1 align="center" style="border-bottom: none">
     Cosmere API
