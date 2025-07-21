@@ -1,6 +1,14 @@
-# Cosmere API & Frontend
+<p align="center">
+  <a href="http://localhost:5175">
+    <img src="/Users/jbthejedi/Documents/developer/cosmere_api/branding/cosmere_readme_banner.png"  alt="Cosmere API" />
+  </a>
+</p>
 
-Welcome to the Cosmere API and frontend project! This repository contains:
+<h1 align="center" style="border-bottom: none">
+    Cosmere API
+</h1>
+
+### Welcome to the Cosmere API and frontend project! This repository contains:
 - A FastAPI backend for Cosmere data
 - A React (Vite) frontend for browsing and querying the Cosmere universe
 

@@ -1,0 +1,150 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for cosmic background -->
+    <radialGradient id="cosmicBg" cx="50%" cy="30%">
+      <stop offset="0%" style="stop-color:#1a0033;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#2d1b69;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#0f0518;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Gradient for magical energy -->
+    <linearGradient id="magicGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:0.8" />
+      <stop offset="33%" style="stop-color:#4ecdc4;stop-opacity:0.6" />
+      <stop offset="66%" style="stop-color:#45b7d1;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#96ceb4;stop-opacity:0.5" />
+    </linearGradient>
+    
+    <!-- Gradient for celestial bodies -->
+    <radialGradient id="celestialGlow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#ff8c42;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ff6b9d;stop-opacity:0.3" />
+    </radialGradient>
+    
+    <!-- Animated magical particle effect -->
+    <circle id="particle" r="1" fill="#ffd700" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Complex geometric pattern for magical symbols -->
+    <g id="magicSymbol">
+      <circle r="20" fill="none" stroke="url(#magicGlow)" stroke-width="2" opacity="0.6"/>
+      <circle r="15" fill="none" stroke="url(#magicGlow)" stroke-width="1" opacity="0.4"/>
+      <circle r="10" fill="none" stroke="url(#magicGlow)" stroke-width="1.5" opacity="0.5"/>
+      <path d="M-15,0 L15,0 M0,-15 L0,15 M-10.6,-10.6 L10.6,10.6 M-10.6,10.6 L10.6,-10.6" 
+            stroke="url(#magicGlow)" stroke-width="1" opacity="0.7"/>
+      <animateTransform attributeName="transform" type="rotate" 
+                        values="0;360" dur="20s" repeatCount="indefinite"/>
+    </g>
+  </defs>
+  
+  <!-- Cosmic background -->
+  <rect width="800" height="600" fill="url(#cosmicBg)"/>
+  
+  <!-- Distant stars -->
+  <circle cx="100" cy="80" r="1" fill="#ffffff" opacity="0.8"/>
+  <circle cx="200" cy="120" r="0.5" fill="#ffffff" opacity="0.6"/>
+  <circle cx="350" cy="90" r="1.5" fill="#ffffff" opacity="0.9"/>
+  <circle cx="500" cy="60" r="0.8" fill="#ffffff" opacity="0.7"/>
+  <circle cx="650" cy="100" r="1.2" fill="#ffffff" opacity="0.8"/>
+  <circle cx="720" cy="140" r="0.6" fill="#ffffff" opacity="0.5"/>
+  <circle cx="150" cy="180" r="0.7" fill="#ffffff" opacity="0.6"/>
+  <circle cx="450" cy="150" r="1" fill="#ffffff" opacity="0.8"/>
+  <circle cx="600" cy="180" r="0.9" fill="#ffffff" opacity="0.7"/>
+  <circle cx="80" cy="220" r="0.5" fill="#ffffff" opacity="0.5"/>
+  
+  <!-- Celestial bodies with magical auras -->
+  <g>
+    <!-- Main celestial orb -->
+    <circle cx="400" cy="200" r="40" fill="url(#celestialGlow)" opacity="0.9"/>
+    <circle cx="400" cy="200" r="50" fill="none" stroke="url(#magicGlow)" stroke-width="2" opacity="0.3">
+      <animate attributeName="r" values="50;60;50" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Smaller orbiting body -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" 
+                        values="0 400 200;360 400 200" dur="15s" repeatCount="indefinite"/>
+      <circle cx="480" cy="200" r="15" fill="url(#celestialGlow)" opacity="0.7"/>
+      <circle cx="480" cy="200" r="20" fill="none" stroke="url(#magicGlow)" stroke-width="1" opacity="0.4"/>
+    </g>
+  </g>
+  
+  <!-- Floating magical islands/platforms -->
+  <g opacity="0.8">
+    <!-- Island 1 -->
+    <ellipse cx="150" cy="350" rx="80" ry="25" fill="#2c3e50" opacity="0.8"/>
+    <ellipse cx="150" cy="345" rx="75" ry="20" fill="#34495e"/>
+    <rect x="130" y="330" width="40" height="15" fill="#4a6741" rx="2"/>
+    
+    <!-- Island 2 -->
+    <ellipse cx="650" cy="320" rx="60" ry="20" fill="#2c3e50" opacity="0.8"/>
+    <ellipse cx="650" cy="316" rx="55" ry="16" fill="#34495e"/>
+    <rect x="635" y="305" width="30" height="12" fill="#4a6741" rx="2"/>
+  </g>
+  
+  <!-- Magical energy streams -->
+  <g opacity="0.7">
+    <path d="M100,500 Q200,400 300,450 T500,380 T700,420" 
+          fill="none" stroke="url(#magicGlow)" stroke-width="3"/>
+    <path d="M50,450 Q150,350 250,400 T450,330 T650,370" 
+          fill="none" stroke="url(#magicGlow)" stroke-width="2" opacity="0.6"/>
+    
+    <!-- Animated energy flow -->
+    <circle r="4" fill="url(#magicGlow)" opacity="0.8">
+      <animateMotion dur="8s" repeatCount="indefinite">
+        <mpath href="#energyPath"/>
+      </animateMotion>
+    </circle>
+    <path id="energyPath" d="M100,500 Q200,400 300,450 T500,380 T700,420" 
+          fill="none" stroke="none"/>
+  </g>
+  
+  <!-- Mystical symbols and runes -->
+  <use href="#magicSymbol" x="150" y="450" transform="scale(0.8)"/>
+  <use href="#magicSymbol" x="650" y="420" transform="scale(0.6)"/>
+  <use href="#magicSymbol" x="400" y="480" transform="scale(1.2)"/>
+  
+  <!-- Floating magical particles -->
+  <use href="#particle" x="120" y="380"/>
+  <use href="#particle" x="280" y="320"/>
+  <use href="#particle" x="520" y="360"/>
+  <use href="#particle" x="680" y="280"/>
+  <use href="#particle" x="180" y="480"/>
+  <use href="#particle" x="420" y="520"/>
+  <use href="#particle" x="580" y="500"/>
+  <use href="#particle" x="320" y="280"/>
+  
+  <!-- Ethereal mist/energy clouds -->
+  <g opacity="0.3">
+    <ellipse cx="300" cy="550" rx="150" ry="40" fill="url(#magicGlow)"/>
+    <ellipse cx="500" cy="580" rx="120" ry="30" fill="url(#magicGlow)"/>
+    <ellipse cx="200" cy="520" rx="80" ry="25" fill="url(#magicGlow)"/>
+  </g>
+  
+  <!-- Mystical geometric gateway/portal -->
+  <g transform="translate(400,450)" opacity="0.6">
+    <circle r="60" fill="none" stroke="url(#magicGlow)" stroke-width="3"/>
+    <circle r="45" fill="none" stroke="url(#magicGlow)" stroke-width="2" opacity="0.7"/>
+    <circle r="30" fill="none" stroke="url(#magicGlow)" stroke-width="2" opacity="0.5"/>
+    <path d="M-40,0 L40,0 M0,-40 L0,40 M-28,-28 L28,28 M-28,28 L28,-28" 
+          stroke="url(#magicGlow)" stroke-width="2" opacity="0.8"/>
+    <animateTransform attributeName="transform" type="rotate" 
+                      values="0 400 450;-360 400 450" dur="25s" repeatCount="indefinite"/>
+  </g>
+  
+  <!-- Additional atmospheric effects -->
+  <g opacity="0.4">
+    <circle cx="100" cy="300" r="3" fill="url(#celestialGlow)">
+      <animate attributeName="opacity" values="0.2;0.8;0.2" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="700" cy="250" r="2" fill="url(#celestialGlow)">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="180" r="2.5" fill="url(#celestialGlow)">
+      <animate attributeName="opacity" values="0.1;0.7;0.1" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
