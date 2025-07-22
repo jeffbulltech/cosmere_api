@@ -14,12 +14,7 @@ class MagicSystem(BaseModel):
     power_source = Column(String(255), nullable=True)
     
     # Relationships
-    world_id = Column(
-        String(36),
-        ForeignKey("worlds.id"),
-        nullable=False,
-        index=True
-    )
+    world_id = Column(String(36), ForeignKey("worlds.id"), nullable=True, index=True)
     
     # Detailed information
     description = Column(Text, nullable=True)

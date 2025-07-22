@@ -1,18 +1,18 @@
-"""Initial migration
+"""initial schema
 
-Revision ID: 529ef2ea8a65
+Revision ID: 11212fb944a1
 Revises: 
-Create Date: 2025-07-20 15:45:41.388051
+Create Date: 2025-07-21 13:31:20.578097
 
 """
 from typing import Sequence, Union
 
 from alembic import op
 import sqlalchemy as sa
-from sqlalchemy.dialects import postgresql
+
 
 # revision identifiers, used by Alembic.
-revision: str = '529ef2ea8a65'
+revision: str = '11212fb944a1'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -24,9 +24,9 @@ def upgrade() -> None:
     op.create_table('series',
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
-    sa.Column('id', sa.UUID(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('id', sa.String(length=36), nullable=False),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_series_id'), 'series', ['id'], unique=False)
@@ -36,12 +36,12 @@ def upgrade() -> None:
     sa.Column('intent', sa.String(length=255), nullable=False),
     sa.Column('vessel_name', sa.String(length=255), nullable=True),
     sa.Column('vessel_status', sa.String(length=100), nullable=True),
-    sa.Column('world_location_id', sa.UUID(), nullable=True),
+    sa.Column('world_location_id', sa.String(length=36), nullable=True),
     sa.Column('description', sa.Text(), nullable=True),
-    sa.Column('splinter_info', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
-    sa.Column('id', sa.UUID(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('splinter_info', sa.Text(), nullable=True),
+    sa.Column('id', sa.String(length=36), nullable=False),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_shards_id'), 'shards', ['id'], unique=False)
@@ -52,13 +52,14 @@ def upgrade() -> None:
     op.create_table('worlds',
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('system', sa.String(length=255), nullable=True),
-    sa.Column('shard_id', sa.UUID(), nullable=True),
-    sa.Column('geography', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
+    sa.Column('shard_id', sa.String(length=36), nullable=True),
+    sa.Column('geography', sa.Text(), nullable=True),
     sa.Column('culture_notes', sa.Text(), nullable=True),
     sa.Column('technology_level', sa.String(length=100), nullable=True),
-    sa.Column('id', sa.UUID(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('id', sa.String(length=36), nullable=False),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
+    sa.ForeignKeyConstraint(['shard_id'], ['shards.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_worlds_id'), 'worlds', ['id'], unique=False)
@@ -72,13 +73,13 @@ def upgrade() -> None:
     sa.Column('publication_date', sa.Date(), nullable=True),
     sa.Column('word_count', sa.Integer(), nullable=True),
     sa.Column('chronological_order', sa.Integer(), nullable=True),
-    sa.Column('series_id', sa.UUID(), nullable=True),
-    sa.Column('world_id', sa.UUID(), nullable=False),
+    sa.Column('series_id', sa.String(length=36), nullable=True),
+    sa.Column('world_id', sa.String(length=36), nullable=False),
     sa.Column('summary', sa.Text(), nullable=True),
-    sa.Column('cosmere_significance', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
-    sa.Column('id', sa.UUID(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('cosmere_significance', sa.Text(), nullable=True),
+    sa.Column('id', sa.String(length=36), nullable=False),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
     sa.ForeignKeyConstraint(['series_id'], ['series.id'], ),
     sa.ForeignKeyConstraint(['world_id'], ['worlds.id'], ),
     sa.PrimaryKeyConstraint('id'),
@@ -94,13 +95,13 @@ def upgrade() -> None:
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('type', sa.String(length=100), nullable=False),
     sa.Column('power_source', sa.String(length=255), nullable=True),
-    sa.Column('world_id', sa.UUID(), nullable=False),
+    sa.Column('world_id', sa.String(length=36), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
-    sa.Column('mechanics', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
-    sa.Column('limitations', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
-    sa.Column('id', sa.UUID(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('mechanics', sa.Text(), nullable=True),
+    sa.Column('limitations', sa.Text(), nullable=True),
+    sa.Column('id', sa.String(length=36), nullable=False),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
     sa.ForeignKeyConstraint(['world_id'], ['worlds.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -110,18 +111,18 @@ def upgrade() -> None:
     op.create_index(op.f('ix_magic_systems_world_id'), 'magic_systems', ['world_id'], unique=False)
     op.create_table('characters',
     sa.Column('name', sa.String(length=255), nullable=False),
-    sa.Column('aliases', sa.ARRAY(sa.String()), nullable=True),
+    sa.Column('aliases', sa.Text(), nullable=True),
     sa.Column('species', sa.String(length=100), nullable=True),
     sa.Column('status', sa.String(length=50), nullable=True),
-    sa.Column('world_of_origin_id', sa.UUID(), nullable=False),
-    sa.Column('first_appearance_book_id', sa.UUID(), nullable=True),
+    sa.Column('world_of_origin_id', sa.String(length=36), nullable=False),
+    sa.Column('first_appearance_book_id', sa.String(length=36), nullable=True),
     sa.Column('biography', sa.Text(), nullable=True),
-    sa.Column('magic_abilities', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
-    sa.Column('affiliations', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
-    sa.Column('cosmere_significance', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
-    sa.Column('id', sa.UUID(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('magic_abilities', sa.Text(), nullable=True),
+    sa.Column('affiliations', sa.Text(), nullable=True),
+    sa.Column('cosmere_significance', sa.Text(), nullable=True),
+    sa.Column('id', sa.String(length=36), nullable=False),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
     sa.ForeignKeyConstraint(['first_appearance_book_id'], ['books.id'], ),
     sa.ForeignKeyConstraint(['world_of_origin_id'], ['worlds.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -133,22 +134,22 @@ def upgrade() -> None:
     op.create_index(op.f('ix_characters_status'), 'characters', ['status'], unique=False)
     op.create_index(op.f('ix_characters_world_of_origin_id'), 'characters', ['world_of_origin_id'], unique=False)
     op.create_table('book_characters',
-    sa.Column('book_id', sa.UUID(), nullable=False),
-    sa.Column('character_id', sa.UUID(), nullable=False),
+    sa.Column('book_id', sa.String(length=36), nullable=False),
+    sa.Column('character_id', sa.String(length=36), nullable=False),
     sa.Column('role', sa.String(length=100), nullable=True),
     sa.ForeignKeyConstraint(['book_id'], ['books.id'], ),
     sa.ForeignKeyConstraint(['character_id'], ['characters.id'], ),
     sa.PrimaryKeyConstraint('book_id', 'character_id')
     )
     op.create_table('character_relationships',
-    sa.Column('character_id', sa.UUID(), nullable=False),
-    sa.Column('related_character_id', sa.UUID(), nullable=False),
-    sa.Column('book_context_id', sa.UUID(), nullable=True),
+    sa.Column('character_id', sa.String(length=36), nullable=False),
+    sa.Column('related_character_id', sa.String(length=36), nullable=False),
+    sa.Column('book_context_id', sa.String(length=36), nullable=True),
     sa.Column('relationship_type', sa.String(length=100), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
-    sa.Column('id', sa.UUID(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('id', sa.String(length=36), nullable=False),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
     sa.ForeignKeyConstraint(['book_context_id'], ['books.id'], ),
     sa.ForeignKeyConstraint(['character_id'], ['characters.id'], ),
     sa.ForeignKeyConstraint(['related_character_id'], ['characters.id'], ),
@@ -159,20 +160,22 @@ def upgrade() -> None:
     op.create_index(op.f('ix_character_relationships_id'), 'character_relationships', ['id'], unique=False)
     op.create_index(op.f('ix_character_relationships_related_character_id'), 'character_relationships', ['related_character_id'], unique=False)
     op.create_index(op.f('ix_character_relationships_relationship_type'), 'character_relationships', ['relationship_type'], unique=False)
-    
-    # Add foreign key constraints after all tables are created
-    op.create_foreign_key('fk_shards_world_location_id', 'shards', 'worlds', ['world_location_id'], ['id'])
-    op.create_foreign_key('fk_worlds_shard_id', 'worlds', 'shards', ['shard_id'], ['id'])
+    op.create_foreign_key(
+        'fk_shards_world_location_id_worlds',
+        'shards', 'worlds',
+        ['world_location_id'], ['id']
+    )
+    op.create_foreign_key(
+        'fk_worlds_shard_id_shards',
+        'worlds', 'shards',
+        ['shard_id'], ['id']
+    )
     # ### end Alembic commands ###
 
 
 def downgrade() -> None:
     """Downgrade schema."""
     # ### commands auto generated by Alembic - please adjust! ###
-    # Drop foreign key constraints first
-    op.drop_constraint('fk_worlds_shard_id', 'worlds', type_='foreignkey')
-    op.drop_constraint('fk_shards_world_location_id', 'shards', type_='foreignkey')
-    
     op.drop_index(op.f('ix_character_relationships_relationship_type'), table_name='character_relationships')
     op.drop_index(op.f('ix_character_relationships_related_character_id'), table_name='character_relationships')
     op.drop_index(op.f('ix_character_relationships_id'), table_name='character_relationships')

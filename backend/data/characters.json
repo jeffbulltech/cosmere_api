@@ -1,13 +1,156 @@
 [
   {
-    "id": "dalinar_kholin",
-    "name": "dalinar_kholin",
+    "id": "taravangian",
+    "name": "taravangian",
     "aliases": [
-      "The Blackthorn"
+      "Vargo"
     ],
     "world_of_origin_id": "roshar",
     "species": null,
     "status": null,
-    "biography": "}}\n \n \n == Appearance and Personality ==\n === Appearance ===\n Dalinar is an aging, but powerfully-built man in his fifties, with a warrior's face which he keeps clean-shaven. He has black hair that is gray in the temples, and blue eyes. He is often described as the opposite of handsome, with numerous bruises and an \"unfortunate\" face. His nose was broken at some point during his youth, and it has been crooked ever since. He has numerous old scars on his chest and arms, a remnant of hundreds of battles fought, to the extent where doctors are worried about his ability to use his sword arm. When he acquired Shardplate, he chose to leave it unpainted, which gave it a slate grey color. He also removed any unnecessary decoration or adornment from his plate. He wears a sapphire signet ring with his house's glyphpair on it.\n \n === Personality ===\n ==== The Blackthorn ====\n }}\n \n In his youth, Dalinar was heavily addicted to the [[Thrill]], to the point of turning to other drugs, like [[firemos"
+    "biography": "}}\n \n \n == Appearance and Personality ==\n === Appearance ===\n Taravangian is an aged man with a wispy white beard, which he shaves during the [[True Desolation]]. He has pale grey eyes and an open, kindly face. He is described as having a \u201cliver-spotted head.\u201d He lives with perpetual aches in his body and other symptoms of old age. Before he Ascended as Vessel of Odium, he was in his 70s in Rosharan years.\n \n === Personality ===\n ==== Mortal ====\n }}\n He is popular among many for providing free access to city hospitals funded by an admittance fee to the [[Palanaeum]], and he is known to visit the hospitals on a weekly basis. Ruling Kharbranth with the help of a council. He has been quiet and humble for his entire life, which, when mixed by the claims by the doctor that birthed him that he would have \"diminished capacity,\" led many people to believe he is slow witted. His history of being treated as disabled, and looked down on for it, potentially influenced his egotism and desire to pr"
+  },
+  {
+    "id": "shallan_davar",
+    "name": "shallan_davar",
+    "aliases": [
+      "Veil",
+      "Radiant",
+      "Swiftspren",
+      "little knife",
+      "Kishi",
+      "Formless",
+      "Unulukuak'kina'autu'atai",
+      "Chanasha Hasareh"
+    ],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "}}\n \n Hailing from a mid-level noble house in Jah Keved, Shallan lived a sheltered life on her father's estate until the age of seventeen, when she left to seek an apprenticeship under Princess [[Jasnah Kholin]] as a scholar. While acting as an apprentice to Jasnah Kholin, she became the causal betrothed of Jasnah's cousin, Prince [[Adolin Kholin]], who she later married following the [[Battle of Thaylen Field]]. She also learns of and shares in Jasnah's quest to stop the mysterious and calamitous [[Voidbringers]]. \n \n Shallan has a bond with the [[Cryptic]] [[Pattern]], allowing her to manifest Pattern as a [[Shardblade]] and giving her access to her powers as a [[Surgebinder]]. Eventually, during the [[Battle of Narak]], her bond with Pattern allowed her to become the first Lightweaver to be revealed as a Knight Radiant since the [[Recreance]]. She is bonded to a [[deadeye]] Cryptic named [[Testament]] as well and can summon her as a Shardblade in addition to Pattern.\n \n == Appearanc"
+  },
+  {
+    "id": "oroden",
+    "name": "oroden",
+    "aliases": [],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "==Appearance and Personality==\n \n Oroden seems to be a happy child. He takes quickly to both Kaladin and Rlain, and enjoys playing with toys.\n \n == History ==\n ===Hearthstone===\n Oroden was born in Hearthstone in late  or early , around three years after his older brothers Kaladin and [[Tien]] left home to serve in the [[Alethi]] armies. Hesina was around forty years old when she gave birth to Oroden. His name means 'child of peace'.\n \n Kaladin had very little contact with his parents after leaving home; by the time Oroden was born, they thought Kaladin was dead. He learned of Oroden's existence when he returned to Hearthstone in early . Although he was somewhat shocked by his aging parents having another child, Kaladin wept upon meeting his brother, who was around a year old at the time.\n \n Oroden, along with the rest of the people of [[Hearthstone]], sheltered in [[Roshone]]'s manor when the [[Everstorm]] hit Hearthstone during the [[True Desolation]].\n \n ===Urithiru===\n \n Oroden rem"
+  },
+  {
+    "id": "hesina",
+    "name": "hesina",
+    "aliases": [],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "Hesina's home is built on the outskirts of Hearthstone and is larger than the normal household building due to the inclusion of her husband's surgery room.\n \n ==Appearance and Personality==\n Hesina is a pretty darkeyed woman, with full lips, a narrow face and a bold chin. She is tall and stands several fingers above her husband. She has dark hair that is usually in a tail and wrapped in a kerchief. Hesina often wears brown clothing, sometimes with a hint of color. During the colder months, she wears a knitted hat over her kerchief and a long brown coat to keep warm. Like many [[darkeyed]] women, she covers her [[safehand]] with a glove as it is more practical.\n \n Hesina is quick witted and sharp tongued. She is open minded and wishes for her children to have a choice over their future [[Calling]]s. She is an eloquent speaker and expects the same of her children. Unlike the other mothers in Hearthstone, Hesina rarely chastises her sons for odd behaviour and sometimes joins them.  She en"
+  },
+  {
+    "id": "toathan",
+    "name": "toathan",
+    "aliases": [],
+    "world_of_origin_id": "roshar",
+    "species": "Singer",
+    "status": null,
+    "biography": "He is one of [[Rlain]]'s ancestors, his name remembered in song. Rlain experiences his [[Spiritual Realm]] vision of that historic moment through Toathan's eyes.\n \n == History ==\n === Depiction in the Spiritual Realm ===\n Toathan and his fellow soldiers are sent to defend a singer city, where they defeat the human attackers, despite having minimal organization in their military. Amid gestures of thanks by the city's inhabitants, Ba-Ado-Mishram materializes in the center of the troops and offers gifts of [[Regal]] forms to individuals who distinguished themselves in battle.  She claims the other Unmade have agreed to support her, and they are winning. In Rlain's vision, he defies Mishram and leads the exodus, thought it is unknown if the real Toathan fulfilled the same role in his time. \n \n Mishram lets them go, and their departure inspires Mishram's realization that she must meet with the humans and find a new way to achieve peace. She refers to the Last Legion as \"the best of you.\" \n "
+  },
+  {
+    "id": "aesudan_kholin",
+    "name": "aesudan_kholin",
+    "aliases": [],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "== Appearance and Personality ==\n \n She has a slender figure and long black [[Alethi]] hair that she wears in a bun and adds to it all ten [[gemstone]]s as an accessory to make her stand out.\n \n According to her mother-in-law, [[Navani Kholin]], Aesudan is politically competent, but lacking in other talents. And is not a terribly nice person. She acts like Navani to make her uncomfortable, and she also laughs at [[Dalinar Kholin]] when he is drunk during the treaty signing party. She is also incredibly out of touch with her people, living a life of excess while her people suffer. The canceling of the [[Beggar's Feast]] exemplifies how little she cares for the common people. The throne easily has enough resources to continue the tradition, but Aesudan does not seem to care.\n \n For some reason, Aesudan is under the impression that the [[Almighty]] is displeased with her. In order to gain his goodwill, she surrounds herself with many ardents, to whom she provides a vast array of luxuries:"
+  },
+  {
+    "id": "navani_kholin",
+    "name": "navani_kholin",
+    "aliases": [],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "== Appearance and Personality ==\n === Appearance ===\n \n Navani has a stately bearing and, in some ways, is the picture of a perfect Vorin woman: lush lips, light violet eyes, silvering black hair in perfect braids, curves accentuated by the tight silk havah. She has a warm, feminine voice. She prefers perfume with a less floral scent than most Alethi women. Navani often paints her lips red and wears a red dress with rubies in her hair. Like her daughter, she is known as one of the most beautiful women in Alethkar. She prefers wearing a glove on her safehand.\n \n === Personality ===\n }}\n \n As the dowager queen, Navani often challenges [[Alethi]] protocol. She is known for her ability to learn everything of significance through gossip, no matter where she travels. She is not overly judgmental, but is not above pointing out the obvious. She is known for her confidence, to the point that she is not afraid to match words with [[Hoid|Wit]]. She believes in being blunt, especially when working"
+  },
+  {
+    "id": "gavinor_kholin",
+    "name": "gavinor_kholin",
+    "aliases": [],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "}}\n \n Gavinor spends the first few years of his life in [[Kholinar]] with his mother, Aesudan. Little is known about his childhood before the [[Battle of Kholinar]], when he is around four years old. [[Jasnah Kholin]] currently rules as [[wikipedia:queen regnant|queen regnant]], with Gavinor named as her heir.\n \n == Appearance and Personality ==\n \n Gavinor was a small boy of about four years at the time of [[Kaladin]], Elhokar, and [[Shallan]]'s infiltration of the [[Kholinar Palace]]. He was found wearing a [[House_Kholin|Kholin]] blue uniform, as well as holding a stuffed soldier that wore the same uniform.\n \n By the time Kaladin flies back to [[Alethkar]] after the [[Battle of Thaylen Field]], Gavinor appeared to be three or four years old, with chapped lips and haunted eyes, and was dressed in rags.\n \n After some time living in [[Urithiru]], Gavinor was a healthy young boy, yet too small for his age and somewhat reserved. He had dark hair and pure yellow eyes, and he carries a smal"
+  },
+  {
+    "id": "adolin_kholin",
+    "name": "adolin_kholin",
+    "aliases": [],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "}}\n \n == Appearance and Personality ==\n \n === Appearance ===\n Adolin's hair is mostly blond, with streaks of Alethi black running through it; the blond color comes from [[Evi Kholin|his mother]] and is seen as a sign of his bloodline being impure by some Alethi. His hair has been described as an unruly mop and a stylish mess. Adolin prefers to remain clean-shaven, but he does grow a beard after throwing himself in jail in protest of Kaladin's imprisonment. His beard was also blond speckled with black. His eyes are blue and have an [[Wikipedia:Epicanthic fold|epicanthic fold]]. He has been described as handsome on numerous occasions and, as he is Alethi, it can be surmised that his skin is tan in color. However, because he is half-[[Riran]], his skin tone is lighter than his father's. There is some inconsistency as to Adolin's height; he is described as both shorter and the same height as Dalinar. Shardplate adds a few inches to his height but still doesn't make him as tall as Kaladin. "
+  },
+  {
+    "id": "jasnah_kholin",
+    "name": "jasnah_kholin",
+    "aliases": [],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "}}\n \n \n == Appearance and Personality ==\n \n === Appearance ===\n Jasnah is a reserved and statuesque woman. She is widely praised for her beauty, always graceful and dressed immaculately. She is tall and slender with a full chest. She has tan skin and deep black hair that, when unbound, reaches the middle of her back - though she usually puts it up in intricate braids. She has a squarish face and pale violet eyes with an [[Wikipedia: epicanthic fold|epicanthic fold]].\n \n === Personality ===\n }}\n \n Jasnah is generally a stern and serious person, although she occasionally shows a wry sense of humor, and allows familiarity among those she is close with. She sometimes acts in a brusque manner, and can be exceptionally rude when someone gets on her bad side. She is determined, confident, and often stubborn. She can be extremely tough and ruthless, as she showed when she killed four footpads that attacked her and Shallan. She harbors a deep hatred towards men like them, possibly because of so"
+  },
+  {
+    "id": "rayse",
+    "name": "rayse",
+    "aliases": [
+      "Nun Raylisi",
+      "Rasan"
+    ],
+    "world_of_origin_id": "yolen",
+    "species": null,
+    "status": null,
+    "biography": "}}\n \n \n == Appearance and Personality ==\n === Appearance ===\n \n While Odium\u2019s true essence is too powerful to be seen, Rayse generally presents himself as an old man with a wide, furrowed face and bone-white hair sweeping back from his head, and thick mustaches with a hint of black in them blended into a short white beard. His features look [[Shin]], that is to say, he has pale skin and lacks epicanthic folds, and he wears a golden crown in his powdery hair. \n \n To the [[singers]], on the other hand, he appears as an ancient singer with gold and white marbled skin. He carries a golden sceptre in both of these forms.\n \n When [[Dalinar]] claims to have seen Odium, Rayse shows him an enormous, all-encompassing white-and-red flame emanating human emotion, chiefly hatred and anger.\n \n === Personality ===\n }}\n \n ==== Mortal ====\n Prior to Ascension, Rayse was already thought of as cunning, ambitious, and very dangerous. He was driven to kill Adonalsium to achieve his goals and desires, thoug"
+  },
+  {
+    "id": "kaladin",
+    "name": "kaladin",
+    "aliases": [
+      "Kaladin Stormblessed",
+      "Bridgeboy",
+      "Kal",
+      "Lordling"
+    ],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "}}\n \n Kaladin has known adversity and loss throughout his life. He has suffered repeated oppression and betrayal by [[lighteyes|lighteyed nobility]], including being driven from his home by the [[Roshone|citylord]] of his hometown as a teenager and being sold into slavery by the [[Meridas Amaram|commander]] of his army. Kaladin has also been unable to save numerous patients, comrades, subordinates, and even his brother [[Tien]] from death.\n \n Despite these challenges, or perhaps because of them, Kaladin is driven to protect others. Utilizing his skills as a surgeon, he attempts to save as many lives as possible. As a soldier, he rescued thousands of soldiers during the [[Battle of the Tower]], liberated a thousand bridgemen, and defended Dalinar Kholin and King [[Elhokar Kholin]] from numerous assassins.\n \n He has bonded with the [[honorspren]] [[Sylphrena]], more commonly known as Syl. This bond allows him to discover his powers as a [[Surgebinder]] and destiny as a member of the Knig"
+  },
+  {
+    "id": "renarin_kholin",
+    "name": "renarin_kholin",
+    "aliases": [],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "}}\n \n == Appearance and Personality ==\n === Appearance ===\n Renarin has sapphire eyes and his slender limbs and fingers give him the appearance of someone who has never done manual labor or fought in battle. He has mostly black hair with some blond hair mixed in. He is also distinct in that he wears spectacles, though he eventually stops wearing them after [[Stormlight]] heals his eyesight. Like all officers in the Kholin army, Renarin wears his uniform while out in public, though because of his physical weakness, it has never seen battle. After he joins [[Bridge Four]] he usually wears a Bridge Four uniform instead.\n \n === Personality ===\n Renarin is soft-spoken and thoughtful, and tends to pause and consider responses before speaking up. This can occasionally make him seem calculating or unnerving to those with whom he speaks, though those close to him know him to be otherwise.  \n \n He has a tendency to fidget when nervous, stressed, or anxious as a way to calm himself down. This fid"
+  },
+  {
+    "id": "tien",
+    "name": "tien",
+    "aliases": [],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "}}\n \n \n == Appearance and Personality ==\n }}\n \n He has a mix of unruly brown and black hair, and is small for his age. He has a slight build and round cheeks that are often flushed. Due to his size and childlike features, Tien is often mistaken for being younger than his actual age. This has led to him being mocked on occasion by the other children in [[Hearthstone]]. Despite [[Roshone]]'s treatment of his family and the towns ostracism, Tien liked living in Hearthstone and had not considered moving away before being conscripted. \n \n Tien has a fixation with rocks, of which he owns a large catalogued collection. Some of the rocks in Tien\u2019s collection show off hidden strata if doused with water or change color under certain lights. Due to his aversion with blood, Tien is unable to apprentice to his father and instead works for [[Ral]], the town carpenter. Ral finds his apprentice frustrating as Tien is easily distracted and will work on his own projects instead of those set by his maste"
+  },
+  {
+    "id": "gavilar_kholin",
+    "name": "gavilar_kholin",
+    "aliases": [],
+    "world_of_origin_id": "roshar",
+    "species": null,
+    "status": null,
+    "biography": "}}\n \n \n == Appearance and Personality ==\n }}\n \n === Appearance ===\n Gavilar looks like a true Alethi. He\u2019s tall and has tan skin. He also has strong features, a square chin, a black beard with a hint of white, and pale green eyes. He used to be handsome, but he once broke his nose and suffered a scar on his chin. He is regal with his beard combed, glowing gemstones on the fingers and uniform of newer styles. He has a set of bright blue Shardplate, which he often lends to others in favor of wearing a modern suit, and wears a black iron circlet as crown.\n \n === Personality ===\n He's an ambitious man who is obsessed with the rise of House Kholin and overshadowing the Sunmaker and his legacy. He wants to lead a sustainable kingdom and doesn't overlook responsibility. He is very knowledgeable of history; he has theories on why Sunmaker\u2019s kingdom did not stand as well as knowledge on the history of some blades including Oathbringer that would eventually be Dalinar's. He is known for his poli"
   }
 ]

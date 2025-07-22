@@ -1,6 +1,8 @@
 from sqlalchemy import Column, String, DateTime, func, Text
 from sqlalchemy.ext.declarative import declared_attr
-from app.core.database import Base
+from sqlalchemy.orm import declarative_base
+
+Base = declarative_base()
 import uuid
 import json
 from datetime import datetime

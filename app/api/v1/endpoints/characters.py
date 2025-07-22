@@ -6,16 +6,11 @@ from app.core.database import get_db
 from app.models.character import Character
 from app.models.book import Book
 from app.models.character_relationship import CharacterRelationship
-from app.schemas.character import (
-    CharacterCreate, CharacterUpdate, CharacterResponse, CharacterList, CharacterPaginatedResponse, CharacterFilters
-)
-from app.schemas.book import BookList
-from app.schemas.character_relationship import CharacterRelationshipResponse
 
 router = APIRouter(prefix="/characters", tags=["Characters"])
 
 
-@router.get("/", response_model=CharacterPaginatedResponse)
+@router.get("/")
 def list_characters(
     skip: int = Query(0, ge=0),
     limit: int = Query(20, ge=1, le=100),
@@ -33,14 +28,27 @@ def list_characters(
         query = query.filter(Character.status == status)
     if species:
         query = query.filter(Character.species == species)
-    if magic_ability:
-        query = query.filter(Character.magic_abilities.has_key(magic_ability))
     if search:
         query = query.filter(Character.name.ilike(f"%{search}%"))
     total = query.count()
     items = query.offset(skip).limit(limit).all()
+    
+    # Convert to simple dict format to avoid model method issues
+    result = []
+    for char in items:
+        result.append({
+            "id": char.id,
+            "name": char.name,
+            "world_of_origin_id": char.world_of_origin_id,
+            "species": char.species,
+            "status": char.status,
+            "biography": char.biography,
+            "created_at": char.created_at.isoformat() if char.created_at else None,
+            "updated_at": char.updated_at.isoformat() if char.updated_at else None
+        })
+    
     return {
-        "items": [CharacterList.model_validate(c.to_dict()) for c in items],
+        "items": result,
         "total": total,
         "skip": skip,
         "limit": limit,
@@ -49,58 +57,18 @@ def list_characters(
     }
 
 
-@router.post("/", response_model=CharacterResponse, status_code=status.HTTP_201_CREATED)
-def create_character(character_in: CharacterCreate, db: Session = Depends(get_db)):
-    character = Character(**character_in.model_dump())
-    db.add(character)
-    db.commit()
-    db.refresh(character)
-    return CharacterResponse.model_validate(character.to_dict())
-
-
-@router.get("/{character_id}", response_model=CharacterResponse)
+@router.get("/{character_id}")
 def get_character(character_id: str, db: Session = Depends(get_db)):
     character = db.query(Character).filter(Character.id == character_id).first()
     if not character:
         raise HTTPException(status_code=404, detail="Character not found")
-    return CharacterResponse.model_validate(character.to_dict())
-
-
-@router.put("/{character_id}", response_model=CharacterResponse)
-def update_character(character_id: str, character_in: CharacterUpdate, db: Session = Depends(get_db)):
-    character = db.query(Character).filter(Character.id == character_id).first()
-    if not character:
-        raise HTTPException(status_code=404, detail="Character not found")
-    for field, value in character_in.model_dump(exclude_unset=True).items():
-        setattr(character, field, value)
-    db.commit()
-    db.refresh(character)
-    return CharacterResponse.model_validate(character.to_dict())
-
-
-@router.delete("/{character_id}", status_code=status.HTTP_204_NO_CONTENT)
-def delete_character(character_id: str, db: Session = Depends(get_db)):
-    character = db.query(Character).filter(Character.id == character_id).first()
-    if not character:
-        raise HTTPException(status_code=404, detail="Character not found")
-    db.delete(character)
-    db.commit()
-    return
-
-
-@router.get("/{character_id}/relationships", response_model=List[CharacterRelationshipResponse])
-def get_character_relationships(character_id: str, db: Session = Depends(get_db)):
-    character = db.query(Character).filter(Character.id == character_id).first()
-    if not character:
-        raise HTTPException(status_code=404, detail="Character not found")
-    relationships = db.query(CharacterRelationship).filter(CharacterRelationship.character_id == character_id).all()
-    return [CharacterRelationshipResponse.model_validate(r.to_dict()) for r in relationships]
-
-
-@router.get("/{character_id}/appearances", response_model=List[BookList])
-def get_character_appearances(character_id: str, db: Session = Depends(get_db)):
-    character = db.query(Character).filter(Character.id == character_id).first()
-    if not character:
-        raise HTTPException(status_code=404, detail="Character not found")
-    books = character.books
-    return [BookList.model_validate(b.to_dict()) for b in books] 
+    return {
+        "id": character.id,
+        "name": character.name,
+        "world_of_origin_id": character.world_of_origin_id,
+        "species": character.species,
+        "status": character.status,
+        "biography": character.biography,
+        "created_at": character.created_at.isoformat() if character.created_at else None,
+        "updated_at": character.updated_at.isoformat() if character.updated_at else None
+    } 

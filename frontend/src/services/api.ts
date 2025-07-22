@@ -1,19 +1,23 @@
 const API_BASE = '/api/v1';
 
 export async function fetchBooks() {
-  const res = await fetch(`${API_BASE}/books`);
+  const res = await fetch(`${API_BASE}/books/`);
   if (!res.ok) throw new Error('Failed to fetch books');
-  return res.json();
+  const data = await res.json();
+  // Return the items array from the paginated response
+  return data.items || data;
 }
 
 export async function fetchCharacters() {
-  const res = await fetch(`${API_BASE}/characters`);
+  const res = await fetch(`${API_BASE}/characters/`);
   if (!res.ok) throw new Error('Failed to fetch characters');
-  return res.json();
+  const data = await res.json();
+  return data.items || data;
 }
 
 export async function fetchWorlds() {
-  const res = await fetch(`${API_BASE}/worlds`);
+  const res = await fetch(`${API_BASE}/worlds/`);
   if (!res.ok) throw new Error('Failed to fetch worlds');
-  return res.json();
+  const data = await res.json();
+  return data.items || data;
 }

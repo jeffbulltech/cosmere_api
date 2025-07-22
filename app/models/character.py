@@ -81,13 +81,29 @@ class Character(BaseModel):
         """Get a list of magic abilities."""
         if not self.magic_abilities:
             return []
-        return list(self.magic_abilities.keys())
+        try:
+            import json
+            if isinstance(self.magic_abilities, str):
+                abilities = json.loads(self.magic_abilities)
+            else:
+                abilities = self.magic_abilities
+            return list(abilities.keys()) if isinstance(abilities, dict) else []
+        except (json.JSONDecodeError, AttributeError):
+            return []
     
     def get_affiliations_list(self) -> list:
         """Get a list of affiliations."""
         if not self.affiliations:
             return []
-        return list(self.affiliations.keys())
+        try:
+            import json
+            if isinstance(self.affiliations, str):
+                affiliations = json.loads(self.affiliations)
+            else:
+                affiliations = self.affiliations
+            return list(affiliations.keys()) if isinstance(affiliations, dict) else []
+        except (json.JSONDecodeError, AttributeError):
+            return []
     
     def to_dict(self) -> dict:
         """Convert character to dictionary with additional computed fields."""

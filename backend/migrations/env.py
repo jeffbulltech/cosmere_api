@@ -16,24 +16,10 @@ if config.config_file_name is not None:
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-import sys
-import os
-# Add the project root to the Python path
-# Handle both running from project root and backend directory
-current_dir = os.path.dirname(os.path.abspath(__file__))
-backend_dir = os.path.dirname(current_dir)
-project_root = os.path.dirname(backend_dir)
-sys.path.insert(0, project_root)
-
-from app.models.base import Base
-from app.models.world import World
-from app.models.series import Series
-from app.models.book import Book
-from app.models.character import Character
-from app.models.magic_system import MagicSystem
-from app.models.shard import Shard
-from app.models.character_relationship import CharacterRelationship
-
+# from myapp import mymodel
+# target_metadata = mymodel.Base.metadata
+from app.core.database import Base
+from app.models import *
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,

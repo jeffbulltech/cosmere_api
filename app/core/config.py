@@ -118,3 +118,5 @@ def validate_settings():
 
 # Call validation on import
 validate_settings() 
+
+SQLALCHEMY_DATABASE_URL = "postgresql://jbthejedi@localhost/cosmere" 

@@ -5,12 +5,19 @@ from pathlib import Path
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 import uuid
+import re
+import os
 
 # Add the parent directory to the Python path to import from the root app
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from app.core.database import SessionLocal, create_tables
+from app.core.database import SessionLocal, create_tables, engine
 from app.models import World, Series, Book, Character, Shard, MagicSystem
+from app.core.config import SQLALCHEMY_DATABASE_URL
+
+print("DATABASE_URL env:", os.getenv("DATABASE_URL"))
+print("SQLALCHEMY_DATABASE_URL:", SQLALCHEMY_DATABASE_URL)
+print("ACTUAL ENGINE URL AT SEED TIME:", engine.url)
 
 class DatabaseSeeder:
     def __init__(self):
@@ -32,17 +39,29 @@ class DatabaseSeeder:
         shards_data = self.load_json_data('shards.json')
         for shard_data in shards_data:
             shard = self.session.query(Shard).get(shard_data.get('id'))
+            # Use 'title' as fallback for 'name'
+            name = shard_data.get('name') or shard_data.get('title')
+            # Use 'intent' if present, else try to extract from summary, else 'unknown'
+            intent = shard_data.get('intent')
+            if not intent:
+                # Try to extract from summary (look for 'Intent' section)
+                summary = shard_data.get('summary', '')
+                m = re.search(r'==\s*intent\s*==\s*([^=]+)', summary, re.IGNORECASE)
+                if m:
+                    intent = m.group(1).strip().split('\n')[0]
+                else:
+                    intent = 'unknown'
             if shard:
-                shard.name = shard_data['name']
-                shard.intent = shard_data['intent']
+                shard.name = name
+                shard.intent = intent
                 shard.vessel_name = shard_data.get('vessel_name')
                 shard.vessel_status = shard_data.get('vessel_status', 'unknown')
                 shard.description = shard_data.get('description', '')
             else:
                 shard = Shard(
                     id=shard_data.get('id', str(uuid.uuid4())),
-                    name=shard_data['name'],
-                    intent=shard_data['intent'],
+                    name=name,
+                    intent=intent,
                     vessel_name=shard_data.get('vessel_name'),
                     vessel_status=shard_data.get('vessel_status', 'unknown'),
                     description=shard_data.get('description', '')
@@ -162,24 +181,23 @@ class DatabaseSeeder:
         magic_data = self.load_json_data('magic_systems.json')
         for magic_item in magic_data:
             magic_system = self.session.query(MagicSystem).get(magic_item.get('id'))
+            # Use 'title' as fallback for 'name'
+            name = magic_item.get('name') or magic_item.get('title')
             if magic_system:
-                magic_system.name = magic_item['name']
-                magic_system.world_id = magic_item.get('world_id')
-                magic_system.type = magic_item.get('type')
-                magic_system.mechanics = json.dumps(magic_item.get('mechanics', {}))
-                magic_system.limitations = json.dumps(magic_item.get('limitations', {}))
-                magic_system.power_source = magic_item.get('power_source')
-                magic_system.description = magic_item.get('description')
+                magic_system.name = name
+                magic_system.related = magic_item.get('related')
+                magic_system.universe = magic_item.get('universe')
+                magic_system.description = magic_item.get('description', '')
             else:
                 magic_system = MagicSystem(
                     id=magic_item.get('id', str(uuid.uuid4())),
-                    name=magic_item['name'],
-                    world_id=magic_item.get('world_id'),
-                    type=magic_item.get('type'),
-                    mechanics=json.dumps(magic_item.get('mechanics', {})),
-                    limitations=json.dumps(magic_item.get('limitations', {})),
+                    name=name,
+                    type=magic_item.get('type', 'unknown'),
                     power_source=magic_item.get('power_source'),
-                    description=magic_item.get('description')
+                    world_id=magic_item.get('world_id'),
+                    description=magic_item.get('description', ''),
+                    mechanics=magic_item.get('mechanics'),
+                    limitations=magic_item.get('limitations')
                 )
                 self.session.add(magic_system)
         self.session.commit()

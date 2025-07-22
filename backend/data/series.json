@@ -1,7 +1,7 @@
 [
     {
       "id": "stormlight_archive",
-      "name": "The Stormlight Archive",
+      "name": "stormlight_archive",
       "world": "roshar",
       "planned_books": 10,
       "current_books": 4,
@@ -9,7 +9,7 @@
     },
     {
       "id": "mistborn_era1",
-      "name": "Mistborn: The Original Trilogy",
+      "name": "mistborn_era1",
       "world": "scadrial", 
       "planned_books": 3,
       "current_books": 3,

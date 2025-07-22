@@ -5,15 +5,11 @@ import uuid
 from app.core.database import get_db
 from app.models.magic_system import MagicSystem
 from app.models.world import World
-from app.schemas.magic_system import (
-    MagicSystemCreate, MagicSystemUpdate, MagicSystemResponse, MagicSystemList, MagicSystemPaginatedResponse, MagicSystemFilters
-)
-from app.schemas.world import WorldList
 
 router = APIRouter(prefix="/magic-systems", tags=["Magic Systems"])
 
 
-@router.get("/", response_model=MagicSystemPaginatedResponse)
+@router.get("/")
 def list_magic_systems(
     skip: int = Query(0, ge=0),
     limit: int = Query(20, ge=1, le=100),
@@ -34,8 +30,23 @@ def list_magic_systems(
         query = query.filter(MagicSystem.name.ilike(f"%{search}%"))
     total = query.count()
     items = query.offset(skip).limit(limit).all()
+    
+    # Convert to simple dict format to avoid model method issues
+    result = []
+    for ms in items:
+        result.append({
+            "id": ms.id,
+            "name": ms.name,
+            "world_id": ms.world_id,
+            "type": ms.type,
+            "power_source": ms.power_source,
+            "description": ms.description,
+            "created_at": ms.created_at.isoformat() if ms.created_at else None,
+            "updated_at": ms.updated_at.isoformat() if ms.updated_at else None
+        })
+    
     return {
-        "items": [MagicSystemList.model_validate(ms.to_dict()) for ms in items],
+        "items": result,
         "total": total,
         "skip": skip,
         "limit": limit,
@@ -44,57 +55,18 @@ def list_magic_systems(
     }
 
 
-@router.post("/", response_model=MagicSystemResponse, status_code=status.HTTP_201_CREATED)
-def create_magic_system(magic_system_in: MagicSystemCreate, db: Session = Depends(get_db)):
-    magic_system = MagicSystem(**magic_system_in.model_dump())
-    db.add(magic_system)
-    db.commit()
-    db.refresh(magic_system)
-    return MagicSystemResponse.model_validate(magic_system.to_dict())
-
-
-@router.get("/{magic_system_id}", response_model=MagicSystemResponse)
+@router.get("/{magic_system_id}")
 def get_magic_system(magic_system_id: str, db: Session = Depends(get_db)):
     magic_system = db.query(MagicSystem).filter(MagicSystem.id == magic_system_id).first()
     if not magic_system:
         raise HTTPException(status_code=404, detail="Magic system not found")
-    return MagicSystemResponse.model_validate(magic_system.to_dict())
-
-
-@router.put("/{magic_system_id}", response_model=MagicSystemResponse)
-def update_magic_system(magic_system_id: str, magic_system_in: MagicSystemUpdate, db: Session = Depends(get_db)):
-    magic_system = db.query(MagicSystem).filter(MagicSystem.id == magic_system_id).first()
-    if not magic_system:
-        raise HTTPException(status_code=404, detail="Magic system not found")
-    for field, value in magic_system_in.model_dump(exclude_unset=True).items():
-        setattr(magic_system, field, value)
-    db.commit()
-    db.refresh(magic_system)
-    return MagicSystemResponse.model_validate(magic_system.to_dict())
-
-
-@router.delete("/{magic_system_id}", status_code=status.HTTP_204_NO_CONTENT)
-def delete_magic_system(magic_system_id: str, db: Session = Depends(get_db)):
-    magic_system = db.query(MagicSystem).filter(MagicSystem.id == magic_system_id).first()
-    if not magic_system:
-        raise HTTPException(status_code=404, detail="Magic system not found")
-    db.delete(magic_system)
-    db.commit()
-    return
-
-
-@router.get("/world/{world_id}", response_model=List[MagicSystemList])
-def get_magic_systems_by_world(world_id: str, db: Session = Depends(get_db)):
-    magic_systems = db.query(MagicSystem).filter(MagicSystem.world_id == world_id).all()
-    return [MagicSystemList.model_validate(ms.to_dict()) for ms in magic_systems]
-
-
-@router.get("/{magic_system_id}/world", response_model=WorldList)
-def get_magic_system_world(magic_system_id: str, db: Session = Depends(get_db)):
-    magic_system = db.query(MagicSystem).filter(MagicSystem.id == magic_system_id).first()
-    if not magic_system:
-        raise HTTPException(status_code=404, detail="Magic system not found")
-    world = db.query(World).filter(World.id == magic_system.world_id).first()
-    if not world:
-        raise HTTPException(status_code=404, detail="World not found")
-    return WorldList.model_validate(world.to_dict()) 
+    return {
+        "id": magic_system.id,
+        "name": magic_system.name,
+        "world_id": magic_system.world_id,
+        "type": magic_system.type,
+        "power_source": magic_system.power_source,
+        "description": magic_system.description,
+        "created_at": magic_system.created_at.isoformat() if magic_system.created_at else None,
+        "updated_at": magic_system.updated_at.isoformat() if magic_system.updated_at else None
+    } 

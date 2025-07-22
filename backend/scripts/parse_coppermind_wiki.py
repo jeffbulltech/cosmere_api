@@ -166,6 +166,59 @@ def parse_character(file_path: str) -> Dict[str, Any]:
     }
     return char
 
+def parse_shard(file_path: str) -> Dict[str, Any]:
+    with open(file_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    # Find infobox
+    infobox = None
+    end_idx = 0
+    for i, line in enumerate(lines):
+        if line.strip().lower().startswith('{{shard info'):
+            infobox, end_idx = parse_infobox(lines, i+1)
+            break
+    if not infobox:
+        infobox, end_idx = {"name": Path(file_path).stem}, 0
+    infobox = {k.lower(): v for k, v in infobox.items()}
+    narrative = extract_narrative(lines, end_idx+1)
+    shard = {
+        "id": infobox.get("name", Path(file_path).stem).lower().replace(' ', '_'),
+        "name": infobox.get("name", Path(file_path).stem),
+        "vessel": infobox.get("vessel"),
+        "slivers": infobox.get("slivers"),
+        "status": infobox.get("status"),
+        "perpendicularity": infobox.get("perpendicularity"),
+        "splinters": infobox.get("splinters"),
+        "magic": infobox.get("magic"),
+        "residence": infobox.get("residence"),
+        "universe": infobox.get("universe"),
+        "books": infobox.get("books"),
+        "summary": narrative[:1000]
+    }
+    return shard
+
+def parse_magic_system(file_path: str) -> Dict[str, Any]:
+    with open(file_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    # Find infobox
+    infobox = None
+    end_idx = 0
+    for i, line in enumerate(lines):
+        if line.strip().lower().startswith('{{magic'):
+            infobox, end_idx = parse_infobox(lines, i+1)
+            break
+    if not infobox:
+        infobox, end_idx = {"name": Path(file_path).stem}, 0
+    infobox = {k.lower(): v for k, v in infobox.items()}
+    narrative = extract_narrative(lines, end_idx+1)
+    magic = {
+        "id": infobox.get("name", Path(file_path).stem).lower().replace(' ', '_'),
+        "name": infobox.get("name", Path(file_path).stem),
+        "related": infobox.get("related"),
+        "universe": infobox.get("universe"),
+        "summary": narrative[:1000]
+    }
+    return magic
+
 def main():
     # Updated file paths for new test
     world_file = "/Users/jbthejedi/Documents/scadrial.html"
