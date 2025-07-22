@@ -1,6 +1,6 @@
 !["A Cosmere-inspired image from Brandon Sanderson's fantasy universe"](/branding/cosmere_readme_banner.png)
 
-<div align="center" style="font-size: 4em; font-weight: bold; margin: 0.5em 0;">
+<div align="center" style="font-size: 8em; font-weight: bold; margin: 0.5em 0;">
     Cosmere API
 </div>
 
