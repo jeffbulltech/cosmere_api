@@ -1,8 +1,6 @@
 !["A Cosmere-inspired image from Brandon Sanderson's fantasy universe"](/branding/cosmere_readme_banner.png)
 
-<div align="center" style="font-size: 8em; font-weight: bold; margin: 0.5em 0;">
-    Cosmere API
-</div>
+# Cosmere API
 
 ### Welcome to the Cosmere API and frontend project! This repository contains:
 - A FastAPI backend for Cosmere data
