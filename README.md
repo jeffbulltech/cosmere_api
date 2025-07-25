@@ -24,3 +24,17 @@ See `/docs` for detailed guides and troubleshooting.
 ---
 
 For any issues, please consult the docs or open an issue. 
+
+## Backend Development: Using the Python Virtual Environment
+
+All backend development, testing, and server runs should be done with the virtual environment activated. This ensures the correct dependencies and Python version are used.
+
+**To activate the virtual environment:**
+
+```bash
+source cosmere_api_venv/bin/activate
+```
+
+If you open a new terminal or restart your shell, remember to activate the virtual environment before running backend commands.
+
+--- 
