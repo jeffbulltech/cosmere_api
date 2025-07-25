@@ -1,10 +1,26 @@
-!["A Cosmere-inspired image from Brandon Sanderson's fantasy universe"](/branding/cosmere_readme_banner.png)
+!["A Cosmere-inspired image from Brandon Sanderson's fantasy universe"](/branding/cosmere_banner.png)
 
 # Cosmere API
 
-### Welcome to the Cosmere API and frontend project! This repository contains:
-- A FastAPI backend for Cosmere data
-- A React (Vite) frontend for browsing and querying the Cosmere universe
+## 🌟 Explore the vast universe of Brandon Sanderson's Cosmere
+
+**The Cosmere API** is your gateway to exploring the interconnected worlds, characters, and magic systems of Brandon Sanderson's epic fantasy universe. Whether you're a longtime fan or new to the Cosmere, this platform helps you discover the rich connections between stories spanning multiple series including *The Stormlight Archive*, *Mistborn*, *Elantris*, *Warbreaker*, and more.
+
+### What You Can Discover:
+
+🔍 **Character Connections**: Track characters across different worlds and series, explore their relationships, magic abilities, and cosmic significance
+
+📚 **World Hopping**: Navigate between planets like Roshar, Scadrial, Sel, and Nalthis, understanding their unique cultures, magic systems, and connections
+
+✨ **Magic System Exploration**: Dive deep into the various Investiture systems - from Allomancy and Surgebinding to AonDor and Awakening
+
+🌌 **Cosmere Lore**: Uncover the deeper mysteries of Shards, Adonalsium, and the fundamental forces that bind this universe together
+
+### Perfect For:
+- **Fans** wanting to explore character relationships and world connections
+- **Readers** looking to understand the broader Cosmere connections
+- **Developers** building Cosmere-related applications and tools
+- **Researchers** studying the intricate world-building and magic systems
 
 ## Roadmap
 
