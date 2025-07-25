@@ -6,6 +6,10 @@
 - A FastAPI backend for Cosmere data
 - A React (Vite) frontend for browsing and querying the Cosmere universe
 
+## Roadmap
+
+Find the latest release notes and what's coming for the project in the [ROADMAP](./ROADMAP.md)
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -182,8 +186,8 @@ For detailed guides and advanced topics, see the documentation in the [`/docs` d
 
 ### 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE.md) file for details.
 
 ---
 
-**Need Help?** Check the documentation in `/docs` or open an issue for support. 
+**Need Help?** Check the documentation in [/docs](./docs/) or open an issue for support. 
