@@ -6,35 +6,184 @@
 - A FastAPI backend for Cosmere data
 - A React (Vite) frontend for browsing and querying the Cosmere universe
 
-## Quick Start
+## 🚀 Quick Start
 
-For full setup instructions, troubleshooting, and development workflow, **see the documentation in the [`/docs` directory](./docs/)**, especially:
+### Prerequisites
 
-- [Development Stack Setup](./docs/dev_stack_setup.md): How to install, run, and debug the backend and frontend locally.
-- [Bulk Import Process](./docs/bulk_import.md): How to parse and import MediaWiki source files into the database.
+Before you begin, ensure you have the following installed:
 
-## Project Structure
-- `backend/` — FastAPI backend, scripts, and data
-- `frontend/` — React app (Vite)
-- `docs/` — Documentation for setup, data pipeline, and more
+- **Python 3.9+** (recommended: 3.9.6)
+- **Node.js 18+** and npm
+- **PostgreSQL 13+** (for the database)
+- **Git** (for cloning the repository)
 
-## Contributing
-See `/docs` for detailed guides and troubleshooting.
+### Installation & Setup
 
----
+#### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd cosmere_api
+```
 
-For any issues, please consult the docs or open an issue. 
+#### 2. Backend Setup
 
-## Backend Development: Using the Python Virtual Environment
-
-All backend development, testing, and server runs should be done with the virtual environment activated. This ensures the correct dependencies and Python version are used.
-
-**To activate the virtual environment:**
-
+**Activate the Python Virtual Environment:**
 ```bash
 source cosmere_api_venv/bin/activate
 ```
 
-If you open a new terminal or restart your shell, remember to activate the virtual environment before running backend commands.
+**Install Python Dependencies:**
+```bash
+cd backend
+pip install -r requirements.txt
+```
 
---- 
+**Database Configuration:**
+1. Create a PostgreSQL database named `cosmere`
+2. Update the database connection in `backend/app/core/config.py`:
+   ```python
+   DATABASE_URL: str = "postgresql://your_username@localhost/cosmere"
+   ```
+
+**Run Database Migrations:**
+```bash
+cd backend
+alembic upgrade head
+```
+
+#### 3. Frontend Setup
+
+**Install Node.js Dependencies:**
+```bash
+cd frontend
+npm install
+```
+
+### 🏃‍♂️ Starting the Application
+
+#### Option 1: Using Makefile (Recommended)
+
+**Start Backend Server:**
+```bash
+make backend-dev
+```
+
+**Start Frontend Server (in a new terminal):**
+```bash
+make frontend
+```
+
+#### Option 2: Manual Commands
+
+**Backend (with virtual environment activated):**
+```bash
+cd backend
+source ../cosmere_api_venv/bin/activate
+python3 -c "from app.main import app; import uvicorn; uvicorn.run(app, host='127.0.0.1', port=8000, log_level='info')"
+```
+
+**Frontend:**
+```bash
+cd frontend
+npm run dev
+```
+
+### 🌐 Access Points
+
+Once both servers are running:
+
+- **Frontend Application**: http://localhost:5173
+- **Backend API**: http://127.0.0.1:8000
+- **API Documentation**: http://127.0.0.1:8000/api/v1/docs
+
+### 📁 Project Structure
+```
+cosmere_api/
+├── backend/           # FastAPI backend
+│   ├── app/          # Application code
+│   ├── data/         # JSON data files
+│   ├── scripts/      # Data import scripts
+│   └── migrations/   # Database migrations
+├── frontend/         # React app (Vite)
+│   ├── src/          # Source code
+│   ├── public/       # Static assets
+│   └── package.json  # Dependencies
+├── docs/             # Documentation
+└── cosmere_api_venv/ # Python virtual environment
+```
+
+### 🔧 Development Workflow
+
+#### Backend Development
+- Always activate the virtual environment: `source cosmere_api_venv/bin/activate`
+- The backend uses FastAPI with SQLAlchemy and PostgreSQL
+- API endpoints are available at `/api/v1/`
+- Auto-generated documentation at `/api/v1/docs`
+
+#### Frontend Development
+- Built with React 18, TypeScript, and Vite
+- Uses Tailwind CSS for styling
+- API calls are proxied through Vite to the backend
+- Hot module replacement enabled for development
+
+### 🐛 Troubleshooting
+
+#### Common Issues
+
+**Backend Issues:**
+- **ModuleNotFoundError**: Ensure you're in the `backend/` directory and virtual environment is activated
+- **Database Connection Error**: Check PostgreSQL is running and connection string is correct
+- **Port Already in Use**: Kill existing processes: `killall python3`
+
+**Frontend Issues:**
+- **Port Already in Use**: Vite will automatically try the next available port
+- **API Connection Error**: Ensure backend is running on port 8000
+- **Build Errors**: Clear node_modules and reinstall: `rm -rf node_modules && npm install`
+
+#### Environment Setup
+
+**Virtual Environment Management:**
+```bash
+# Activate (always do this for backend work)
+source cosmere_api_venv/bin/activate
+
+# Deactivate when done
+deactivate
+```
+
+**Database Management:**
+```bash
+# Check database connection
+psql cosmere -c "\dt"
+
+# Run migrations
+cd backend && alembic upgrade head
+
+# Reset database (if needed)
+cd backend && alembic downgrade base && alembic upgrade head
+```
+
+### 📚 Additional Documentation
+
+For detailed guides and advanced topics, see the documentation in the [`/docs` directory](./docs/):
+
+- [Development Stack Setup](./docs/dev_stack_setup.md): Detailed setup instructions
+- [Bulk Import Process](./docs/bulk_import.md): Data import workflows
+- [API Documentation](./backend/docs/api_documentation.md): API reference
+- [Database Schema](./backend/docs/database_schema.md): Database design
+
+### 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly (both frontend and backend)
+5. Submit a pull request
+
+### 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+**Need Help?** Check the documentation in `/docs` or open an issue for support. 
