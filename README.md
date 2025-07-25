@@ -1,8 +1,8 @@
 !["A Cosmere-inspired image from Brandon Sanderson's fantasy universe"](/branding/cosmere_banner.png)
 
-# Cosmere API
+# The Cosmere API
 
-## 🌟 Explore the vast universe of Brandon Sanderson's Cosmere
+## Explore the vast universe of Brandon Sanderson's Cosmere
 
 **The Cosmere API** is your gateway to exploring the interconnected worlds, characters, and magic systems of Brandon Sanderson's epic fantasy universe. Whether you're a longtime fan or new to the Cosmere, this platform helps you discover the rich connections between stories spanning multiple series including *The Stormlight Archive*, *Mistborn*, *Elantris*, *Warbreaker*, and more.
 
