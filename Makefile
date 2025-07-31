@@ -6,6 +6,9 @@ SEEDER=python3 backend/scripts/seed_database.py
 MERGE=python3 backend/scripts/merge_data_sources.py
 DATA_DIR=backend/data
 
+# Declare phony targets
+.PHONY: all parse merge seed clean bulk-parse venv backend backend-dev frontend help
+
 # Default target: run the full pipeline
 all: parse merge seed
 
@@ -43,12 +46,20 @@ backend-dev:
 	@echo "Activating venv and starting backend server on http://127.0.0.1:8000 ..."
 	source cosmere_api_venv/bin/activate && cd backend && python3 -c "from app.main import app; import uvicorn; uvicorn.run(app, host='127.0.0.1', port=8000, log_level='info')"
 
+# Start the frontend development server
+frontend:
+	@echo "Starting frontend development server on http://localhost:5173 ..."
+	cd frontend && npm run dev
+
 # Help
 help:
 	@echo "Cosmere API Data Pipeline Makefile"
 	@echo "Targets:"
-	@echo "  parse   - Parse MediaWiki files to JSON (backend/data/)"
-	@echo "  merge   - Merge Coppermind and manual character data (optional)"
-	@echo "  seed    - Seed the database from JSON files"
-	@echo "  all     - Run parse, merge, and seed in sequence"
-	@echo "  clean   - Remove generated JSON files" 
+	@echo "  parse      - Parse MediaWiki files to JSON (backend/data/)"
+	@echo "  merge      - Merge Coppermind and manual character data (optional)"
+	@echo "  seed       - Seed the database from JSON files"
+	@echo "  all        - Run parse, merge, and seed in sequence"
+	@echo "  clean      - Remove generated JSON files"
+	@echo "  backend    - Start backend server (requires venv activation)"
+	@echo "  backend-dev- Start backend server with venv activation"
+	@echo "  frontend   - Start frontend development server" 

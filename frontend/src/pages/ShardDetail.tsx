@@ -89,12 +89,6 @@ const ShardDetail: React.FC = () => {
               </p>
             </div>
             <div className="flex space-x-2">
-              <Link
-                to={`/shards/${shard.id}/edit`}
-                className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-              >
-                Edit
-              </Link>
               <button
                 onClick={() => setShowDeleteConfirm(true)}
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
